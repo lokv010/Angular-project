@@ -8,18 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class MultipleserversComponent implements OnInit {
   setserver=false;
   servercreationstate='no server created';
-  servername= ' test';
+  servername= 'test';
+  serverCreated=false;
 
   constructor() { 
-    setTimeout(() => {
-      
-    this.setserver=true;}, 3000);
+    setTimeout(() => {this.setserver=true;}, 3000);
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
+
   onCreateserver(){
-    this.servercreationstate='server created';
+ this.serverCreated=true;
+    this.servercreationstate='server created! name is ' +this.servername;
   }
 
 onUpdateservername(event:Event)

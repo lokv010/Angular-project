@@ -1,2 +1,17 @@
 <p>data binding example</p>
-<div>server status is {{serverstatus}} and the server number is {{serverid}}   </div>
+<div [ngStyle]="{backgroundColor:getcolor()}" 
+[ngClass]="{connected: serverstatus==='connected' }">server status is {{serverstatus}} and the server number is {{serverid}}   </div>
+<h4>Enter Name</h4>
+<!--input type="text" class="form-control" (input)="Onentername($event)"-->
+<input type="text" class="form-control" [(ngModel)]="nameentered">
+<button class="btn btn-primary" [disabled]="nameentered === '' " (click)="nameentered=''" >reset</button>
+<p>{{nameentered}} </p>
+
+<input type="text" id="displaydetails" class="displaybox">
+
+<!-- <button class="btn btn-primary" id="dp"  (click)="showSecret=!showSecret"     >Display Details</button> -->
+<button class="btn btn-primary" id="dp"  (click)="onToggle()">Display Details</button>
+<p  id="lt" *ngFor="let logitem of log"
+[ngStyle]="{backgroundColor: logitem>=5 ?'blue' :'green' }"
+[ngClass]="{'white-text':logitem>=5}">{{logitem}}</p>
+<p id="pswd" *ngIf="showSecret">password=donut</p>
